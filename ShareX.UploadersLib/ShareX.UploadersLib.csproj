@@ -1047,6 +1047,9 @@
     <None Include="Favicons\GoogleCloud.ico" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DiscordRichPresence">
+      <Version>1.0.175</Version>
+    </PackageReference>
     <PackageReference Include="FluentFTP">
       <Version>33.0.3</Version>
     </PackageReference>

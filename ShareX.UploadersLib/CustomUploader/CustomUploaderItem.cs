@@ -106,7 +106,7 @@ namespace ShareX.UploadersLib
         [DefaultValue("")]
         public string ErrorMessage { get; set; }
 
-        private CustomUploaderItem()
+        public  CustomUploaderItem()
         {
         }
 

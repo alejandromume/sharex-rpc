@@ -37,6 +37,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DiscordRPC;
 
 namespace ShareX
 {
@@ -49,10 +50,26 @@ namespace ShareX
         private UploadInfoManager uim;
         private ToolStripDropDownItem tsmiImageFileUploaders, tsmiTrayImageFileUploaders, tsmiTextFileUploaders, tsmiTrayTextFileUploaders;
         private ImageFilesCache actionsMenuIconCache = new ImageFilesCache();
+        public DiscordRpcClient clientRPC;
 
         public MainForm()
         {
             InitializeControls();
+            string id = "829764087273488395";
+            clientRPC = new DiscordRpcClient(id);
+            clientRPC.Initialize();
+            clientRPC.SetPresence(new RichPresence()
+            {
+                Details = $"Version: {Program.VersionText}",
+                State = $"Config: {Program.UploadersConfig.CustomUploadersList[Program.UploadersConfig.CustomUploadersList.Count - 1]}",
+
+                Assets = new Assets()
+                {
+                    LargeImageKey = "sharex",
+                    LargeImageText = "ShareX Mod with DiscordRPC by alejandromume#0884"
+
+                },
+            });
         }
 
         private void MainForm_HandleCreated(object sender, EventArgs e)
@@ -2012,10 +2029,33 @@ namespace ShareX
 
         private void tsbAbout_Click(object sender, EventArgs e)
         {
-            using (AboutForm aboutForm = new AboutForm())
+
+            if (tsbRPC.Text == "Discord Presence: Off")
             {
-                aboutForm.ShowDialog();
+                clientRPC.SetPresence(new RichPresence()
+                {
+                    Details = $"Version: {Program.VersionText}",
+                    State = $"Config: {Program.UploadersConfig.CustomUploadersList[Program.UploadersConfig.CustomUploadersList.Count - 1]}",
+                    Assets = new Assets()
+                    {
+                        LargeImageKey = "sharex",
+                        LargeImageText = "ShareX Mod with DiscordRPC by alejandromume#0884"
+
+                    },
+
+                });
+                tsbRPC.Text = "Discord Presence: On";
+                MessageBox.Show("RPC Enabled", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }else if (tsbRPC.Text == "Discord Presence: On")
+            {
+                clientRPC.ClearPresence();
+                tsbRPC.Text = "Discord Presence: Off";
+                MessageBox.Show("RPC Disabled", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
             }
+            /**/
         }
 
         private void TsbTwitter_Click(object sender, EventArgs e)
@@ -2515,6 +2555,21 @@ namespace ShareX
             Program.Settings.ShowThumbnailTitle = false;
             tsmiThumbnailTitleHide.Check();
             UpdateMainWindowLayout();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            new AboutForm().ShowDialog();
+        }
+
+        private void niTray_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void ttMain_Popup(object sender, PopupEventArgs e)
+        {
+
         }
 
         private void TsmiThumbnailTitleTop_Click(object sender, EventArgs e)

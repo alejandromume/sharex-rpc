@@ -249,7 +249,7 @@ namespace ShareX
             }
         }
 
-        private string GetCustomUploaderName(int index, TaskSettings taskSettings)
+        public string GetCustomUploaderName(int index, TaskSettings taskSettings)
         {
             if (taskSettings.OverrideCustomUploader)
             {

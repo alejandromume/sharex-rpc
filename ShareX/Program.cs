@@ -67,7 +67,7 @@ namespace ShareX
                 sbVersionText.Append(version.Major + "." + version.Minor);
                 if (version.Build > 0) sbVersionText.Append("." + version.Build);
                 if (version.Revision > 0) sbVersionText.Append("." + version.Revision);
-                if (Dev) sbVersionText.Append(" Dev");
+                if (Dev) sbVersionText.Append(" Discord RPC");
                 if (Portable) sbVersionText.Append(" Portable");
                 return sbVersionText.ToString();
             }
