@@ -10,9 +10,8 @@
 
 ## Install
 
-1. Download source and build it
-2. Download `build/` folder with the compiled version and replace your install
-3. **[Recommended]** Download the `build/ShareX.exe` and `build/DiscordRPC.dll`file in your ShareX installation folder
+1. **[Recommended]** Download source and build it
+2. Download the `build/ShareX.exe` and `build/DiscordRPC.dll`file in your ShareX installation folder
 
 ## Sources
 * DiscordRPC: [https://github.com/Lachee/discord-rpc-csharp](https://github.com/Lachee/discord-rpc-csharp)
