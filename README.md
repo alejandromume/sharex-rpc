@@ -13,6 +13,9 @@
 1. **[Recommended]** Download source and build it
 2. Download the `build/ShareX.exe` and `build/DiscordRPC.dll`file in your ShareX installation folder
 
+## Issues
+* If you change your custom config file, you will need to turn `off/on` the `Discord Presence` button 
+
 ## Sources
 * DiscordRPC: [https://github.com/Lachee/discord-rpc-csharp](https://github.com/Lachee/discord-rpc-csharp)
 * ShareX original source: [https://github.com/ShareX/ShareX](https://github.com/ShareX/ShareX)
